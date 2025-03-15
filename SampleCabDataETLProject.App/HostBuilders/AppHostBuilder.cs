@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SampleCabDataETLProject.BLL.Services;
+using SampleCabDataETLProject.BLL.Services.Contracts;
 using SampleCabDataETLProject.DAL.Infrastructure;
 using SampleCabDataETLProject.DAL.Infrastructure.Interfaces;
 using SampleCabDataETLProject.DAL.Persistence;
@@ -37,6 +39,10 @@ namespace SampleCabDataETLProject.App.HostBuilders
 
                 // Add repositories
                 services.AddTransient<ISampleCabDataRepository, SampleCabDataRepository>();
+
+                // Add Services
+                services.AddTransient<ISampleCabDataService, SampleCabDataService>();
+
                 // Other
                 services.AddTransient<IUnitOfWork, UnitOfWork>();
             });
